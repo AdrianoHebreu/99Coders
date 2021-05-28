@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter , Route } from 'react-router-dom';
 
 /** Paginas */
-
+import Site from './site/site';
+import Login from './app/login';
 
 function App() {
     return <BrowserRouter>
-            <Route exact="/" component="">
-
-            </Route>
+            <Route exact path ='/' component={Site}/>
+            <Route exact path ='/app'component={Login}/>
            </BrowserRouter>;
 }
 
