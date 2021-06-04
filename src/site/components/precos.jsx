@@ -39,7 +39,7 @@ function Precos(){
                 </div>
 
                 <div className="col-lg-4">
-                    <dic className="card">
+                    <div className="card">
                         <div className="card-header">
                             <h1>Premium</h1>
                         </div>
@@ -49,7 +49,7 @@ function Precos(){
                             <p>Suporte por telefone</p>
                             <button className="btn btn-lg btn-outline-primary">Assinar Agora</button>
                         </div>
-                    </dic>
+                    </div>
                 </div>
             </div>
         </div>
