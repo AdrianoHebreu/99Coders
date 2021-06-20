@@ -11,7 +11,7 @@ function ResetSenha(){
 
         <div className="form-floating">
           <input type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
-          <label for="floatingInput">E-mail</label>
+          <label htmlFor="floatingInput">E-mail</label>
         </div>
         
         <button className="w-100 btn btn-lg btn-primary" type="submit">Enviar</button>

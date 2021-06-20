@@ -1,25 +1,68 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React , { useState }  from 'react';
 import './novaconta.css';
 import { Link } from 'react-router-dom';
 
+import firebase from '../config/firebase';
+import 'firebase/auth';
+
 function NovaConta(){
+
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  function cadastrarUsuario(){
+    setMensagem('');
+
+    if (!email || !senha) {
+      setMensagem('Informe o email ou senha!');
+      return;
+    }
+
+    firebase.auth()
+    .createUserWithEmailAndPassword(email, senha)
+    .then(resultado => {
+      alert('Usuario criado com sucesso!');
+    })
+    .catch(error => {
+      if (error.message === 'Password should be at least 6 characters') {
+        setMensagem('A senha deve ter pelo menos 6 caracteres');
+      } else if (error.message === 'The email address is badly formatted.') {
+        setMensagem('O email não é válido');
+      }
+      else if (error.message === 'The email address is already in use by another account.') {
+        setMensagem('Esse email já está em uso por outra conta');
+      }
+      else {
+        setMensagem('Erro ao criar conta: ' + error.message);
+      }
+    })
+  }
+
+  //Arrow function
+
     return <div className="d-flex align-items-center text-center form-container">
       <form className="form-signin">
         <img className="mb-4" src="/img/logo-small2.png" alt="" />
         <h1 className="h3 mb-3 fw-normal">Criar Conta</h1>
 
         <div className="form-floating">
-          <input type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
-          <label for="floatingInput">E-mail</label>
+          <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
+          <label htmlFor="floatingInput">E-mail</label>
         </div>
 
         <div className="form-floating">
-          <input type="password" className="form-control" id="floatingPassword" placeholder="Senha" />
-          <label for="floatingPassword">Senha</label>
+          <input onChange={(e)=> setSenha(e.target.value)} type="password" className="form-control" id="floatingPassword" placeholder="Senha" />
+          <label htmlFor="floatingPassword">Senha</label>
         </div>
         
-        <button className="w-100 btn btn-lg btn-primary" type="submit">Criar Conta</button>
+        <button onClick={cadastrarUsuario} className="w-100 btn btn-lg btn-primary" type="button">Criar Conta</button>
+
+        { // sucesso === 1 ? 'faça isso' : 'faça aquilo'
+        mensagem.length > 0 ?
+        <div className="alert alert-danger mt-2" role="alert">{mensagem}</div> : null
+        }
 
         <div className="login-links mt-5">
           <Link to="/app" className="mx-3"> Já tenho uma conta</Link>
