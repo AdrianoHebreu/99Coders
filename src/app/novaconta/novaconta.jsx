@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React , { useState }  from 'react';
 import './novaconta.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import firebase from '../config/firebase';
 import 'firebase/auth';
@@ -11,6 +11,7 @@ function NovaConta(){
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const [sucesso, setSucesso] = useState('');
 
   function cadastrarUsuario(){
     setMensagem('');
@@ -23,9 +24,10 @@ function NovaConta(){
     firebase.auth()
     .createUserWithEmailAndPassword(email, senha)
     .then(resultado => {
-      alert('Usuario criado com sucesso!');
+      setSucesso('S');
     })
     .catch(error => {
+      setSucesso('N');
       if (error.message === 'Password should be at least 6 characters') {
         setMensagem('A senha deve ter pelo menos 6 caracteres');
       } else if (error.message === 'The email address is badly formatted.') {
@@ -62,6 +64,10 @@ function NovaConta(){
         { // sucesso === 1 ? 'faça isso' : 'faça aquilo'
         mensagem.length > 0 ?
         <div className="alert alert-danger mt-2" role="alert">{mensagem}</div> : null
+        }
+
+        {
+          sucesso === 'S' ? <Redirect to='/app/home' /> : null
         }
 
         <div className="login-links mt-5">

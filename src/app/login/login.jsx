@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React , { useState } from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 import firebase from '../config/firebase';
@@ -40,9 +40,13 @@ function Login(){
         </div>
         
         <button onClick={LoginUsuario} className="w-100 btn btn-lg btn-primary" type="button">Acessar</button>
+        
         { // sucesso === 1 ? 'faça isso' : 'faça aquilo'
         sucesso === 'N' ?
         <div className="alert alert-danger" role="alert">E-mail ou senha invalido!</div> : null
+        }
+        {
+          sucesso === 'S' ? <Redirect to='/app/home' /> : null
         }
         <div className="login-links mt-5">
           <Link to="/app/resetsenha" className="mx-3">Esqueci minha senha</Link>

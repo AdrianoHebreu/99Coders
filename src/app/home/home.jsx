@@ -3,10 +3,18 @@ import React from 'react';
 import './home.css';
 import Navbar from '../components/navbar/navbar';
 
-function Home(){
-    return <div>
-        <Navbar/>
+import ListaClientes from '../components/listacliente/listacliente';
+
+function Home() {
+  return (
+    <div>
+      <Navbar />
+      <div className="container-fluid titulo">
+        <h1>Cadastro de clientes</h1>
+        <ListaClientes />
+      </div>
     </div>
-  }
+  )
+}
 
 export default Home;
