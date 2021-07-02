@@ -32,7 +32,7 @@ function Home() {
 
       setClientes(listaCli);
     })
-  }, [busca]);
+  }, [busca, listaCli]);
 
   return (
     <div>

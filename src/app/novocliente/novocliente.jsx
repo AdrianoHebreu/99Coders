@@ -13,23 +13,23 @@ function NovoCliente() {
         <h1>Novo Cliente</h1>
         <form>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" class="form-label"><i class="fas fa-user"></i> Nome</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <label htmlFor="exampleInputEmail1" className="form-label"><i className="fas fa-user"></i> Nome</label>
+            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
 
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" class="form-label"><i class="fas fa-envelope"></i> E-mail</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <label htmlFor="exampleInputEmail1" className="form-label"><i className="fas fa-envelope"></i> E-mail</label>
+            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
 
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" class="form-label"><i class="fas fa-phone-alt"></i> Fone</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <label htmlFor="exampleInputEmail1" className="form-label"><i className="fas fa-phone-alt"></i> Fone</label>
+            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
           </div>
 
           <div className="text-center">
             <Link to='/app/home' className="btn btn-outline-primary btn-acao" type="button">Cancelar</Link>
-            <button type="submit" class="btn btn-primary btn-acao">Salvar</button>
+            <button type="submit" className="btn btn-primary btn-acao">Salvar</button>
           </div>
 
         </form>
