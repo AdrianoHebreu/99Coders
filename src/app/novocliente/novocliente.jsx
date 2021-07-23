@@ -12,7 +12,6 @@ function NovoCliente() {
   const [fone, setFone] = useState('');
   const [mensagem, setMensagem] = useState('');
   const [sucesso, setSucesso] = useState('N');
-  const db = firebase.firestore();
 
   function CadastrarCliente(){
 
@@ -23,7 +22,7 @@ function NovoCliente() {
       setMensagem('Informe o e-mail');
     }
     else{
-        db.collection('clientes').add({
+        firebase.firestore().collection('clientes').add({
           nome: nome,
           email: email,
           fone: fone

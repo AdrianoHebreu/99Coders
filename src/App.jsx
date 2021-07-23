@@ -8,6 +8,7 @@ import NovaConta from './app/novaconta/novaconta';
 import ResetSenha from './app/resetsenha/resetsenha';
 import Home from './app/home/home';
 import NovoCliente from './app/novocliente/novocliente';
+import EditarCliente from './app/editarcliente/editarcliente';
 
 function App() {
     return <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
             <Route exact path ='/app/resetsenha'component={ResetSenha}/>
             <Route exact path ='/app/home'component={Home}/>
             <Route exact path ='/app/novocliente'component={NovoCliente}/>
+            <Route exact path ='/app/editarcliente/:id' component={EditarCliente} />
            </BrowserRouter>;
 }
 
