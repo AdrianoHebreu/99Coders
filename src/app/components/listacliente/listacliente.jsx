@@ -26,7 +26,7 @@ function ListaClientes(props) {
                         <td>{cliente.fone}</td>
                         <td>
                         <Link to={`/app/editarcliente/${cliente.id}`}><i className="fas fa-edit icone-acao"></i></Link>
-                        <Link onClick={() => props.clikDelete(cliente.id)}><i className="far fa-trash-alt icone-acao red"></i></Link>
+                        <Link to='#' onClick={() => props.clikDelete(cliente.id)}><i className="far fa-trash-alt icone-acao red"></i></Link>
                     </td>
                     </tr>
                 })

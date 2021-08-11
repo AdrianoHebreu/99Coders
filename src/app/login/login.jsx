@@ -1,25 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React , { useState } from 'react';
+import React , { useState, useContext } from 'react';
 import './login.css';
 import { Link, Redirect } from 'react-router-dom';
-
+import { AuthContext } from '../context/auth';
 
 import firebase from '../config/firebase';
 import 'firebase/auth';
+
+
 
 function Login(){
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [sucesso, setSucesso] = useState();
+    const {setLogado, setUsuario} = useContext(AuthContext);
+    
 
     function LoginUsuario (){
       firebase.auth()
       .signInWithEmailAndPassword(email, senha)
       .then(function(firebaseUser){
+        localStorage.setItem("logado", "S");
+        setLogado(true);
+        setUsuario(email);
         setSucesso('S');
       })
       .catch(function(error){
+        localStorage.setItem("logado", "N");
+        setLogado(false);
+        setUsuario('');
         setSucesso('N');
       })
     }

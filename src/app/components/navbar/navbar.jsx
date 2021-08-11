@@ -1,9 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
 import './navbar.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/auth';
 
 function Navbar(){
+
+  const {setLogado} = useContext(AuthContext);
+
+  function Logout() {
+    setLogado(false);
+    localStorage.removeItem("logado");
+  }
     return  <nav className="navbar navbar-expand-md navbar-dark">
 
     <div className='container-fluid'> 
@@ -25,7 +33,7 @@ function Navbar(){
         <Link to="/app/novocliente" className="nav-link" aria-current="page">Novo Cliente</Link>
         </li>
         <li className="nav-item">
-        <Link to="/app" className="nav-link" aria-current="page">Sair</Link>
+          <a  onClick={Logout} className="nav-link logout" aria-current="page">Sair</a>
         </li>
       </ul>
     </div>    
