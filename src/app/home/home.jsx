@@ -10,6 +10,8 @@ import firebase from '../config/firebase';
 
 import SweetAlert from 'react-bootstrap-sweetalert';
 
+import clientespdf from '../reports/clientes/clientes';
+
 function Home() {
 
   const [clientes, setClientes] = useState([]);
@@ -60,12 +62,17 @@ function Home() {
         <h1>Cadastro de clientes</h1>
         <div className="row">
           <div className="col-4">
-            <Link to='/app/novocliente' className="btn btn-primary" type="button"><i className="fas fa-plus"></i> Cliente</Link>
+
+            <Link to='/app/novocliente' className="btn btn-primary btn-cli " type="button"><i className="fas fa-plus"></i> Cliente</Link>
+
+            <button onClick={(e) => clientespdf(clientes)} className="btn btn-danger btn-cli" type="button" id="button-addon2"><i className="far fa-file-pdf"></i> Gerar PDF</button>
+
           </div>
 
           <div className="col-8">
             <div className="input-group mb-3">
               <input onChange={(e) => setTexto(e.target.value)} type="text" className="form-control" placeholder="Pesquisar por nome" aria-describedby="button-addon2" />
+
               <button onClick={(e) => setBusca(texto)} className="btn btn-primary" type="button" id="button-addon2"><i className="fas fa-search"></i> Pesquisar</button>
             </div>
           </div>
